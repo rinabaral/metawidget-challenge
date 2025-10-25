@@ -1,0 +1,150 @@
+/* Metawidget wrapper styles */
+#mwContainer {
+  min-height: 200px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+/* Loading state */
+#mwContainer:empty::before {
+  content: "Loading Metawidget...";
+  color: #666;
+  font-style: italic;
+}
+
+/* Metawidget form styles */
+#mwContainer form {
+  margin: 0;
+}
+
+#mwContainer table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+#mwContainer tr {
+  border-bottom: 1px solid #eee;
+}
+
+#mwContainer td {
+  padding: 12px 8px;
+  vertical-align: top;
+}
+
+#mwContainer td:first-child {
+  width: 30%;
+  font-weight: bold;
+  color: #333;
+}
+
+#mwContainer td:last-child {
+  width: 70%;
+}
+
+#mwContainer label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: normal;
+  color: #333;
+}
+
+#mwContainer input[type="text"],
+#mwContainer input[type="number"],
+#mwContainer input[type="email"],
+#mwContainer input[type="password"],
+#mwContainer select,
+#mwContainer textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+#mwContainer input:focus,
+#mwContainer select:focus,
+#mwContainer textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+#mwContainer input[type="checkbox"] {
+  margin-right: 8px;
+  transform: scale(1.2);
+}
+
+#mwContainer .required {
+  color: #dc3545;
+}
+
+#mwContainer .help-text {
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* Error states */
+#mwContainer .error {
+  border-color: #dc3545;
+}
+
+#mwContainer .error-message {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Fallback form styles */
+.metawidget-fallback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.metawidget-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.metawidget-field label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.metawidget-field .required {
+  color: #dc3545;
+  margin-left: 0.25rem;
+}
+
+.metawidget-field input,
+.metawidget-field select,
+.metawidget-field textarea {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.metawidget-field input:focus,
+.metawidget-field select:focus,
+.metawidget-field textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.metawidget-field .help-text {
+  font-size: 12px;
+  color: #666;
+  margin-top: 0.25rem;
+  font-style: italic;
+}

@@ -1,0 +1,76 @@
+<!-- Metawidget Person Management Application -->
+<div class="app-container">
+  <div class="main-content">
+    <!-- Person Form Section -->
+    <section class="form-section">
+      <h2>👤 Person Details</h2>
+      <div class="person-form">
+        <app-metawidget-wrapper 
+          [toInspect]="person" 
+          [config]="mwConfig"
+          (change)="onPersonChange($event)">
+        </app-metawidget-wrapper>
+        
+        <div class="form-actions">
+          <button 
+            type="button" 
+            (click)="onSave()" 
+            class="save-btn"
+            [disabled]="isSaving">
+            {{ isSaving ? 'Saving...' : '💾 Save Person' }}
+          </button>
+          <button 
+            type="button" 
+            (click)="resetForm()" 
+            class="reset-btn">
+            🔄 Reset Form
+          </button>
+        </div>
+
+        <!-- Save Status Message -->
+        <div *ngIf="saveMessage" class="save-message" [class.success]="saveMessage.includes('✅')" [class.error]="saveMessage.includes('❌')">
+          {{ saveMessage }}
+        </div>
+      </div>
+    </section>
+
+    <!-- Saved Persons List -->
+    <section class="list-section">
+      <h2>📋 Saved Persons ({{ allPersons.length }})</h2>
+      <div *ngIf="allPersons.length === 0" class="empty-state">
+        <p>No persons saved yet. Create your first person above!</p>
+      </div>
+      
+      <div *ngIf="allPersons.length > 0" class="persons-list">
+        <div *ngFor="let person of allPersons; let i = index" class="person-card">
+          <div class="person-info">
+            <h3>{{ person.firstName }} {{ person.lastName }}</h3>
+            <p><strong>Age:</strong> {{ person.age }}</p>
+            <p><strong>Address:</strong> {{ getAddressString(person.address) }}</p>
+            <p *ngIf="person.children && person.children.length > 0">
+              <strong>Children:</strong> {{ person.children.join(', ') }}
+            </p>
+          </div>
+          <div class="person-actions">
+            <button (click)="loadPersonForEdit(person)" class="edit-btn">✏️ Edit</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Debug Information (Development) -->
+    <section class="debug-section">
+      <details>
+        <summary>🔧 Debug Information</summary>
+        <div class="debug-info">
+          <h4>Current Person Data:</h4>
+          <pre>{{ person | json }}</pre>
+          
+          <h4>All Saved Persons:</h4>
+          <pre>{{ allPersons | json }}</pre>
+        </div>
+      </details>
+    </section>
+  </div>
+
+</div>
